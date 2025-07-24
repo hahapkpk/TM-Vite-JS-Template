@@ -1,0 +1,55 @@
+{
+  "project": "tm-vite-js-template",
+  "coding_style": {
+    "javascript": {
+      "semi": false,
+      "quotes": "single"
+    }
+  },
+  "workflows": [
+    {
+      "name": "setup",
+      "trigger": "if no package.json or vite config",
+      "actions": [
+        "run: npm init -y",
+        "run: npm install vite vite-plugin-monkey -D",
+        "create: vite.config.js from template",
+        "create: src/main.js if not exists"
+      ]
+    },
+    {
+      "name": "add-module",
+      "trigger": "user says: 新增模块 或 add module",
+      "actions": [
+        "ask user module name and purpose",
+        "create: src/modules/<name>.js with standard export default pattern",
+        "append: src/modules/index.js to register new module",
+        "update UI list if necessary"
+      ]
+    },
+    {
+      "name": "dev",
+      "trigger": "user says: run dev or start dev server",
+      "actions": [ "run: npm run dev" ]
+    },
+    {
+      "name": "build",
+      "trigger": "user says: 打包 发布 build",
+      "actions": [ "run: npm run build" ]
+    },
+    {
+      "name": "fix-error",
+      "trigger": "when build/dev error occurs",
+      "actions": [
+        "analyze error message",
+        "locate related file",
+        "apply patch",
+        "retry command"
+      ]
+    }
+  ],
+  "conventions": {
+    "module_export": "export default function moduleName(ctx){ return { name: 'moduleName', run(){/*...*/} } }",
+    "ui_update": "All panel buttons/list managed in src/ui/panel.js"
+  }
+}

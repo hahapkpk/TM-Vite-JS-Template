@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TM Template 测试页面</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .info {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        .steps {
+            background: #f3e5f5;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        .steps ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .steps li {
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐒 TM Template 测试页面</h1>
+        
+        <div class="info">
+            <h3>📋 功能说明</h3>
+            <p>这是一个用于测试 Tampermonkey 脚本的页面。安装脚本后，您应该能看到：</p>
+            <ul>
+                <li>右上角出现一个蓝色的管理面板</li>
+                <li>左侧有脚本总开关和"运行所有模块"按钮</li>
+                <li>右侧显示所有加载的模块列表，每个模块都有独立的开关</li>
+            </ul>
+        </div>
+
+        <div class="steps">
+            <h3>🔧 测试步骤</h3>
+            <ol>
+                <li>安装生成的 <code>dist/tm-vite-js-template.user.js</code> 脚本到 Tampermonkey</li>
+                <li>刷新此页面，查看右上角是否出现管理面板</li>
+                <li>测试左侧的脚本总开关，关闭后所有模块开关应该被禁用</li>
+                <li>测试右侧的模块列表，每个模块都应该有独立的开关和运行按钮</li>
+                <li>点击"运行"按钮测试单个模块功能</li>
+                <li>点击"运行所有模块"按钮测试批量运行</li>
+                <li>拖拽面板标题栏可以移动面板位置</li>
+                <li>双击标题栏可以将面板吸附到右上角</li>
+            </ol>
+        </div>
+
+        <div class="info">
+            <h3>📝 当前加载的模块</h3>
+            <p>根据 <code>src/modules/</code> 目录，应该包含以下模块：</p>
+            <ul>
+                <li><strong>testHello</strong> - 显示Hello弹窗和计数器</li>
+                <li><strong>anotherModule</strong> - 在页面左下角添加按钮</li>
+            </ul>
+        </div>
+
+        <p style="text-align: center; color: #666; margin-top: 40px;">
+            如果一切正常，您应该能看到右上角的管理面板！🎉
+        </p>
+    </div>
+
+    <script>
+        // 简单的页面交互，用于测试脚本是否正常工作
+        console.log('测试页面已加载，等待 Tampermonkey 脚本...');
+        
+        // 检测脚本是否已加载
+        setTimeout(() => {
+            const panel = document.getElementById('tm-template-panel');
+            if (panel) {
+                console.log('✅ TM Template 脚本已成功加载！');
+            } else {
+                console.log('❌ 未检测到 TM Template 脚本，请检查是否正确安装。');
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

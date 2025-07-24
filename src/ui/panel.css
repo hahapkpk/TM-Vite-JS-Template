@@ -1,0 +1,277 @@
+/* 备选按钮样式（仅在GM_registerMenuCommand不可用时显示） */
+#tm-template-menu {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000000;
+  font-family: system-ui, sans-serif;
+}
+
+.tm-menu__button {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #4f8ef7 0%, #3d7ae0 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(79, 142, 247, 0.4);
+  transition: all 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  color: white;
+}
+
+.tm-menu__button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(79, 142, 247, 0.6);
+}
+
+.tm-menu__button:active {
+  transform: scale(0.95);
+}
+
+/* 主面板样式 */
+#tm-template-panel {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  z-index: 999999;
+  width: 420px;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: system-ui, sans-serif;
+  color: #333;
+}
+
+.tm-panel__header {
+  background: #4f8ef7;
+  color: #fff;
+  padding: 8px 12px;
+  cursor: move;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+
+.tm-panel__title {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.tm-panel__actions button {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: #fff;
+  padding: 4px 8px;
+  margin-left: 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.tm-panel__actions button:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+.tm-panel__body {
+  padding: 12px;
+}
+
+.tm-panel__content {
+  display: flex;
+  gap: 16px;
+  min-height: 200px;
+}
+
+.tm-panel__left {
+  flex: 0 0 160px;
+  border-right: 1px solid #eee;
+  padding-right: 16px;
+}
+
+.tm-panel__right {
+  flex: 1;
+}
+
+.tm-control-section h4,
+.tm-modules-section h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.tm-switch-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.tm-switch-label {
+  font-size: 13px;
+  color: #666;
+}
+
+/* 开关样式 */
+.tm-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+
+.tm-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.tm-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 24px;
+}
+
+.tm-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+.tm-switch input:checked + .tm-slider {
+  background-color: #4f8ef7;
+}
+
+.tm-switch input:checked + .tm-slider:before {
+  transform: translateX(20px);
+}
+
+.tm-switch input:disabled + .tm-slider {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.tm-switch-small {
+  width: 36px;
+  height: 20px;
+}
+
+.tm-switch-small .tm-slider:before {
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+}
+
+.tm-switch-small input:checked + .tm-slider:before {
+  transform: translateX(16px);
+}
+
+/* 按钮样式 */
+.tm-btn {
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 6px 12px;
+  transition: all 0.2s;
+}
+
+.tm-btn-primary {
+  background: #4f8ef7;
+  color: #fff;
+  width: 100%;
+}
+
+.tm-btn-primary:hover:not(:disabled) {
+  background: #3d7ae0;
+}
+
+.tm-btn-small {
+  padding: 4px 8px;
+  font-size: 12px;
+  background: #f5f5f5;
+  color: #666;
+}
+
+.tm-btn-small:hover:not(:disabled) {
+  background: #e8e8e8;
+}
+
+.tm-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* 模块列表样式 */
+.tm-module-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.tm-module-item:last-child {
+  border-bottom: none;
+}
+
+.tm-module-item.disabled {
+  opacity: 0.5;
+}
+
+.tm-module-info {
+  flex: 1;
+}
+
+.tm-module-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 2px;
+}
+
+.tm-module-file {
+  font-size: 11px;
+  color: #888;
+}
+
+.tm-module-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tm-no-modules {
+  text-align: center;
+  color: #999;
+  font-size: 12px;
+  padding: 20px 0;
+}
+
+.tm-panel__footer {
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid #eee;
+  font-size: 12px;
+  color: #888;
+  text-align: center;
+}
